@@ -1,0 +1,9 @@
+.stat-box{
+    background-color: black;
+    color: white;
+    font-size: 28px;
+    display: flex;
+    justify-content: space-around;
+    padding: 20px 0px;
+    
+}
