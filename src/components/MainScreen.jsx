@@ -1,10 +1,11 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import "../stylesMainScreen.css"
 import { Words } from '../assets/Words';
 
 const MainScreen = () => {
     const[data, setData] = useState([]);
-    const [formattedData, setFormattedData] = useState([]);
+    //2D array 
+    const [segmentedData , setSegmentedData] = useState([])
 
     //get 50 random words into an array
     useEffect(()=>{
@@ -16,6 +17,27 @@ const MainScreen = () => {
         }
 
     },[])
+    //adding 5 rows with 10 words each
+    useEffect(()=>{
+        if(data.length == 0) return;
+        const bufferSegmentedData = [];
+        var counter = 0;
+
+        while(counter+10 <= data.length){
+            const rowData = []
+            for(let i=counter;i<counter+10;i++){
+                //add 10 words into rowData
+                rowData.push(data[i]);
+            }
+                bufferSegmentedData.push(rowData);
+                counter +=10;
+            
+        }
+        setSegmentedData(bufferSegmentedData);
+
+
+    },[data]);
+    
   return (
     <div>MainScreen</div>
   )
